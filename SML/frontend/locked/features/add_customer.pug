@@ -1,0 +1,34 @@
+extends ../../template/user_features
+
+block content 
+    h1 #{title}
+    form.main-form.first(method='POST', action='/app/add/customer')
+        .main-form__title
+            h1 Customer Form
+        .main-form__body
+            input.main-form__input(type='number', name='companyId', value = localUserInfo.companyId, readonly)
+            input.main-form__input(type='text', name='name', placeholder='Name', required='')
+            input.main-form__input(type='email', name='email', placeholder='Email Address', required='')
+            input.main-form__input(type='text', name='address', placeholder='Address', required='')
+            input.main-form__input(type='text', name='phone', placeholder='Phone', required='')
+            label Source 
+                select(name= 'source')
+                        option(value= "other") other
+                        option(value= "facebook") Facebook
+                        option(value= "instagram") Instagram
+                        option(value= "direct call") Direct Call
+                        option(value= "store visit") Store Visit
+                        option(value= "google") Google
+                        option(value= "reffered") Referred
+            label Status 
+                select(name= 'status')
+                        option(value= "in process") in process
+                        option(value= "ordered") ordered
+                        option(value= "quoted") quoted
+            label Assign 
+                select(name= 'staffId')
+                    each staff, i in staffInfo
+                        option(value= staff.staffId) #{staff.name}
+            br    
+            input.main-form__input(type='text', name='comment', placeholder='comment', required='')
+            input.btn(type='submit')

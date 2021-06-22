@@ -1,0 +1,39 @@
+extends ../../template/user_features
+
+block content 
+    h1 #{title}
+    .top_widget_bar
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(class = "md-button" href='/app/add/categories') <img class = "md_add" src="/resources/images/add.svg" alt="logo"></img>
+    br
+
+    .features
+        include ../features/add_categories.pug 
+
+    .filters
+        include ../includes/search_bar.pug
+        include ../includes/select_filter.pug 
+
+    .modern-table-header
+        .modern-table-title
+            h2 Product Category Details
+    table.modern-table#modern-table.small-table
+        tr
+            th Product Category 
+            th price/sq.
+            th Attach price
+            th
+            th
+        each customer, i in customers       
+            tr
+                td= customer.name 
+                td= customer.phone
+                td.action 
+                    a(href='/app/account') price file <i class="material-icons material-icons">attach_file</i> 
+                td.action 
+                    a(href='/app/customer/'+customer.customerId)  <i class="material-icons material-icons">edit</i>
+                td.action 
+                    a.delete-customer(href='#', data-id=customer.customerId) <i class="material-icons material-icons--outline-delete">delete_forever</i>    
+
+                        

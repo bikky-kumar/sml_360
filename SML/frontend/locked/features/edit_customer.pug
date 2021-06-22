@@ -1,0 +1,27 @@
+extends ../../template/user_features
+
+block content 
+    h1 #{title}
+    form.main-form.first(method='POST', action='/app/customer/'+customer.customerId)
+        .main-form__title
+            h1 Edit customer
+        .main-form__body
+            input.main-form__input(type='number', name='companyId', value = localUserInfo.companyId, required='' readonly)
+            input.main-form__input(type='text', name='name', value=customer.name, required='')
+            input.main-form__input(type='email', name='email', value=customer.email, required='')
+            input.main-form__input(type='text', name='address',  value=customer.address, required='')
+            input.main-form__input(type='text', name='phone', value=customer.phone, required='')
+            input.main-form__input(type='text', name='source', value=customer.source, required='' readonly)
+            label Status 
+                select(name= 'status')
+                        option(value= customer.status) #{customer.status}
+                        option(value= "in process") in process
+                        option(value= "ordered") ordered
+                        option(value= "quoted") quoted
+            label Assign 
+                select(name= 'staffId')
+                    each staff, i in staffInfo
+                        option(value= staff.staffId) #{staff.name}
+            br    
+            input.main-form__input(type='text', name='comment', placeholder=customer.comment, required='')
+            input.btn(type='submit')

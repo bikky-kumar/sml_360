@@ -1,0 +1,50 @@
+doctype html
+html(lang='en')
+  head
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    title #{title}
+    link(rel="shortcut icon" type="image/x-icon" href="./favicon.ico")
+    link(rel="icon" href="./favicon.ico" type="image/x-icon")
+    //link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/resources/styles.css')
+    link(rel='stylesheet' href='/resources/js/loading.js')  
+  body
+    nav.navbar.navbar-inverse.navbar
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') <img src="/resources/images/S4.png" alt="logo">
+        #navbar.collapse.navbar-collapse.navbar-home
+          ul.nav.navbar-nav
+            li
+              a(href='/aboutus') About
+            li
+              a(href='/contactus') Contact 
+          ul.nav.navbar-nav.navbar-right
+            if staffId
+              li
+                a(href="/app/dashboard") <button type="button" class="btn"> <img src="/resources/images/takemeto.svg" alt="logo"><span class = "dashboard-span"> DASHBOARD</span></img></button>
+              li 
+                a(href='/users/logout') <button type="button" class="btn btn-danger">Logout</button>
+            else
+              li
+                a(href='/users/register') <button type="button" class="btn btn-primary">Sign up</button>
+              li
+                a(href='/users/login') <button type="button" class="btn btn-success">Login</button>   
+        // /.nav-collapse
+    .container
+      != messages('message', locals)
+      if errors 
+        each error, i in errors 
+          div(class="alert alert-danger") #{error.msg}
+      block content
+      br
+
+    include ../template/footer.pug 
+
+Script(src='/bower_components/jquery/dist/jquery.js')

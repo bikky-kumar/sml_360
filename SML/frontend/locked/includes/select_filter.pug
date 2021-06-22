@@ -1,0 +1,24 @@
+.filter-box
+    select.form-control#view-filter(onchange='changeTo()')
+        option View
+        option All
+        option By Month
+        option By Quarter
+        
+script.
+  function changeTo() {
+    const customers = localStorage.getItem("customers")
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("view-filter");
+    filter = input.value.toUpperCase();
+    alert(filter)
+    table = document.getElementById("modern-table");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        if (filter == 'BY MONTH'){
+          
+        }
+    }
+  }
+
+

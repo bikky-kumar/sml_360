@@ -1,0 +1,23 @@
+
+
+link(rel='stylesheet' href='https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css')
+link(rel='stylesheet' href='/resources/styles.css')
+block content
+    .login-page
+        .login-form
+            form.main-form.first.main-login(method='POST', action='/users/login')
+                .main-form__title
+                    h1 Login
+                .main-form__body
+                    input.main-form__input(type='email', name='email', placeholder='Email Address', required='')
+                    input.main-form__input(type='password', name='password', placeholder='Password', required='')
+                    input.btn(type='submit', value='Login')
+                br    
+                .sign-up
+                    p don't have an account yet?     
+                        a(href="/users/register") register here 
+                    p forgot password?     
+                        a(href="/users/register") click here     
+
+
+

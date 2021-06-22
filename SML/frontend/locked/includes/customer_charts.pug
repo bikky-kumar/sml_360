@@ -1,0 +1,29 @@
+
+Script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js")
+.customer-space-left 
+    .chart-container
+        <canvas id = "doughnutChart" width=400 height=400></canvas>
+     
+
+.customer-space-right  
+    .chart-container
+        <canvas id = "lineChart" width=200 height=200></canvas>
+    h4 Total customer: 
+        if customers != null
+            span= customers.length
+    h4 Source Customer:
+        if customers != null
+            h5 FaceBook:
+                span= call(customers.filter( (customer)=> customer.source == "facebook").reduce((sum, source)=> sum+1, 0))
+            h5 Instagram:
+                span= customers.filter( (customer)=> customer.source == "instagram").reduce((sum, source)=> sum+1, 0)
+            h5 Organic:
+                span= customers.filter( (customer)=> customer.source == "direct call").reduce((sum, source)=> sum+1, 0)        
+           
+<script>
+    -function call(dateString){
+ 
+    //if it's already a date object and not a string you don't need this line:
+    -return dateString
+-}
+</script>                

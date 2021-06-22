@@ -1,0 +1,14 @@
+extends ../template/user_features.pug
+block content 
+
+    div(class='homepage')    
+        h1 Welcome: #{localUserInfo.name}
+        hr   
+        .dataview-dashboard
+            .dataview-customer
+                include includes/customer_charts.pug   
+                
+
+       
+   
+   

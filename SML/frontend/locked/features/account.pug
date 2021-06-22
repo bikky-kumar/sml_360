@@ -1,0 +1,20 @@
+extends ../../template/user_features
+
+block content 
+    h1 #{title}
+    form.main-form.first(method='POST', action='/app/account/'+userInfo.staffId)
+        .main-form__title
+            h1 Modify Account 
+            h6 Note: Some information is controlled by your Admin
+        .main-form__body
+            input.main-form__input(type='email', name='email', placeholder= "email", value= userInfo.email required='')
+            input.main-form__input(type='text', name='name', placeholder="name", value=userInfo.name required='')
+            input.main-form__input(type='text', name='phone', placeholder="phone - "+ userInfo.phone  required='')
+            input.main-form__input(type='text', name='address', placeholder="address -"+ userInfo.address,  required='')
+            input.main-form__input(type='text', name='position', placeholder="position", value= userInfo.position required='')
+            input.main-form__input(type='text', name='department',  placeholder="department - "+ userInfo.department, required='')
+            input.main-form__input(type='text', name='joining Date', placeholder="joining Date", value= userInfo.joiningDate  required='')
+            input.btn(type='submit' value= 'update')         
+
+   
+            

@@ -1,0 +1,40 @@
+extends ../../template/user_features
+
+block content 
+    h1 #{title}
+    .top_widget_bar
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(class = "md-button" href='/app/add/customer') <img class = "md_add" src="/resources/images/add.svg" alt="logo"></img>
+    br
+
+    .filters
+        include ../includes/search_bar.pug
+        include ../includes/select_filter.pug  
+
+    .modern-table-header 
+        .modern-table-title
+            h2 Customer Details
+    table.modern-table#modern-table
+        tr
+            th Full Name
+            th Phone  
+            th Email  
+            th Comment 
+            th Date  
+            th
+            th
+            th
+        each customer, i in customers       
+            tr
+                td= customer.name 
+                td= customer.phone
+                td= customer.email
+                td= customer.comment
+                td= format.Date(customer.joiningDate)
+                td.action 
+                    a(href='/app/customer/'+customer.customerId)  <i class="material-icons material-icons">edit</i>
+                td.action 
+                    a(href='/app/account') <i class="material-icons material-icons">assignment</i> 
+                td.action 
+                    a.delete-customer(href='#', data-id=customer.customerId) <i class="material-icons material-icons--outline-delete">delete_forever</i>    

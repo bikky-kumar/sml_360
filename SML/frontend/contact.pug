@@ -1,0 +1,18 @@
+extends template/layout
+
+block content  
+    h1.title #{title}
+    form.main-form.first(method='POST', action='#')
+        .main-form__title   
+        .main-form__body
+            input.main-form__input(type='text', name='username', placeholder='Name', required='')
+            input.main-form__input(type='email', name='email', placeholder='email', required='')
+            input.main-form__input(type='textarea', name='message', placeholder='message', required='')
+            input.btn(type='submit' value="send")
+    .signin_link
+        | have an account? 
+        a.signin_button(href='/users/login') Sign in
+
+   
+            
+

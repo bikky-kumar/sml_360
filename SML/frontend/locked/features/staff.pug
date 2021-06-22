@@ -1,0 +1,39 @@
+extends ../../template/user_features
+
+block content 
+    h1 #{title}
+    .top_widget_bar
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(class = "md-button" href='/app/add/staff') <img class = "md_add" src="/resources/images/add.svg" alt="logo"></img>
+    br
+
+    .filters
+        include ../includes/search_bar.pug 
+
+
+    .modern-table-header
+        .modern-table-title 
+            h2 Staff Details
+    table.modern-table#modern-table
+        tr
+            th Full Name
+            th Phone  
+            th Email  
+            th position
+            th Department   
+            th Status
+            th
+            th
+        each staff, i in staffInfo        
+            tr
+                td= staff.name 
+                td= staff.phone
+                td= staff.email
+                td= staff.position
+                td= staff.department
+                td active
+                td.action 
+                    a(href='/app/staff/'+ staff.staffId)  <i class="material-icons material-icons">edit</i>
+                td.action
+                    a.delete-staff(href='#', data-id=staff.staffId) <i class="material-icons material-icons--outline-delete">delete_forever</i>    
